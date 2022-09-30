@@ -1,0 +1,21 @@
+.login {
+    border: 1px solid rgb(145, 145, 145);
+    border-radius: 8px;
+    width: 450px;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    margin: 5rem auto;
+    padding: 20px;
+}
+
+.login #text {
+    margin: 7px;
+    
+}
+.login Button {
+    margin-top:12px ;
+}
+#spin {
+    padding: 0.4rem;
+}

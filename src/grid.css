@@ -1,0 +1,30 @@
+element.style {
+    background-color: var(--p-background);
+    color: rgb(106 44 137);
+}
+.main-div {
+    margin: 1rem 3rem ;
+}
+#card {
+    margin: 3rem;
+  max-width: 70vw;
+}
+ #card-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+#select {
+    width: 130px;
+}
+#btn1 {
+    background-color: rgb(146, 107, 197);
+}
+
+#spinner {
+    justify-content: center;
+    padding: 0.4rem;
+    align-items: center;
+    text-align: center;
+}
