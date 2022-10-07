@@ -1,9 +1,8 @@
-import { Button, Card, FormLayout, Heading, InlineError, Layout, Page, ResourceList, Select, SkeletonBodyText, SkeletonPage, Spinner, Stack, TextContainer, TextField, TextStyle, Thumbnail } from '@shopify/polaris';
-import React, { useCallback, useEffect, useState } from 'react'
+import { Button, Card, FormLayout, Layout, Page, Select, SkeletonBodyText, SkeletonPage, Stack, TextField, TextStyle } from '@shopify/polaris';
+import React, { useEffect, useState } from 'react'
 import './component1.css'
 
 function Component1() {
-  const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState([])
   const [selected2, setSelected2] = useState([])
   const [categories, setCategories] = useState([''])
@@ -13,9 +12,7 @@ function Component1() {
   const [hasChild, setHasChild] = useState(true)
   const [spin, setSpin] = useState(false)
   const [text, setText] = useState('');
-  const [mainoptions, setMainoptions] = useState([]);
   const [options2, setOptions2] = useState([]);
-  const [buttonDisabled, setButtonDisabled] = useState(false)
   const [payLoad, setPayload] = useState({
     target_marketplace: "eyJtYXJrZXRwbGFjZSI6ImFsbCIsInNob3BfaWQiOm51bGx9",
     selected: [],
@@ -34,7 +31,6 @@ function Component1() {
   })
 
   const handleSelectChange = (value, i) => {
-    console.log(value)
     data[i].map((item) => {
       if (item.name === value && item.hasChildren === true) {
         let temp = { ...payLoad }
@@ -48,16 +44,17 @@ function Component1() {
         setCategories(temp);
       }
       if (item.name === value && item.hasChildren === false) {
-        console.log("khatam")
         setHasChild(false);
       }
     })
   }
 
-  const AddBox = () => {
+  //To add a new attribute
+  const AddAttribute = () => {
     setBoxArray([...boxArray, 1]);
   }
 
+  //To remove an attribute
   const Remove = (index) => {
     let temp = [...boxArray]
     temp.splice(index, 1)
@@ -88,20 +85,12 @@ function Component1() {
   }
   let tempOptions = []
 
-
+  //select an option in attribute section
   const handleSelectChange2 = (value, i) => {
     let temp = [...selected2]
-    let temp2 = [...mainoptions]
+    let temp2 = [...options2]
     temp[i] = value
-    setMainoptions(temp)
     setSelected2(temp)
-    // options2.map((item, i) => {
-    //   if (item.value === value) {
-    //     alert(item.label + 'yes')
-    //     item.disabled = true
-    //     console.log(item);
-    //   }
-    // })
     for (let i = 0; i <= temp2.length; i++) {
       if (temp.includes(temp2[i].label)) {
         temp2[i].disabled = true
@@ -110,7 +99,6 @@ function Component1() {
     }
     setOptions2(temp2)
   }
-  console.log(options2);
 
   // Calling Api
   let url = new URL("https://multi-account.sellernext.com/home/public/connector/profile/getAllCategory/")
@@ -133,15 +121,13 @@ function Component1() {
     let result = await response.json();
     if (result)
       setSpin(false)
-    console.log(result);
-    // if(payLoad.selected.length)
     let temp = [...data]
     temp.push(result.data)
     setData(temp)
-    setLoading(false)
   }
   useEffect(() => { fetchApi() }, [selected]);
 
+  // getCategory Attribute
   let url2 = new URL("https://multi-account.sellernext.com/home/public/connector/profile/getCategoryAttributes/")
   const fetchApi2 = async () => {
     let response = await fetch(url2, {
@@ -159,13 +145,9 @@ function Component1() {
       body: JSON.stringify(payLoad2)
     })
     let result = await response.json()
-    // .then(res => res.json())
-    // .then(result => {
     let temp = [...data2]
     temp.push(result.data)
     setData2(temp);
-    console.log(result.data);
-    // result.data.map((value, index) => {
     for (const [key1, value1] of Object.entries(result.data)) {
       for (const [key2, value2] of Object.entries(value1)) {
         for (const [key3, value3] of Object.entries(value2)) {
@@ -175,9 +157,7 @@ function Component1() {
         }
       }
     }
-    // })
     setOptions2(tempOptions)
-    // })
   }
 
   useEffect(() => { fetchApi2() }, [])
@@ -231,7 +211,6 @@ function Component1() {
                   <Card sectioned>
                     {boxArray.map((item, i) => (
                       <Stack vertical spacing="extraTight">
-                        {console.log("option is ", options2)};
                         <div className='delete'><Button plain onClick={() => Remove(i)}>Delete</Button></div>
                         <FormLayout>
                           <FormLayout.Group condensed>
@@ -241,7 +220,6 @@ function Component1() {
                               options={options2}
                               value={selected2[i]}
                               onChange={(value) => handleSelectChange2(value, i)}
-                            // disabled={option.disabled}
                             />
                             <TextField
                               label="Shopify Attribute "
@@ -265,7 +243,7 @@ function Component1() {
             <Layout>
               <Layout.Section>
                 <Card title="Optional Attributes" sectioned>
-                  <Button primary onClick={AddBox}>Add Attributes</Button>
+                  <Button primary onClick={AddAttribute}>Add Attributes</Button>
                 </Card>
               </Layout.Section>
             </Layout>
