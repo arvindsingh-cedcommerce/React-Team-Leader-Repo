@@ -26,12 +26,9 @@ function LoginContainer(props) {
       }
     })
     let result = await response.json();
-    console.log(result);
     if(result.success){
       sessionStorage.setItem('customerName',props.customerName);
       sessionStorage.setItem('username',props.username);
-      console.log(sessionStorage.getItem('customerName'))
-      console.log(sessionStorage.getItem('username'))
       alert('You are logged in Successfully') 
       navigate('/home')
     }
