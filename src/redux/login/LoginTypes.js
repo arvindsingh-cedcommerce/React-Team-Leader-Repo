@@ -1,0 +1,3 @@
+export const CUSTOMER_NAME='CUSTOMER_NAME'
+export const USERNAME='USERNAME'
+export const PASSWORD = 'PASSWORD'
