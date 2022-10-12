@@ -1,0 +1,25 @@
+#img1 {
+  border-radius: 50%;
+  width: 90%;
+}
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.icons {
+  display: flex;
+}
+.Polaris-Heading {
+  margin: 10px;
+}
+#hd1 {
+  font-size: 1.6rem;
+}
+#hd2 {
+  font-size: 1.9rem;
+}
+.repo-links a {
+  /* color:rgb(6, 108, 192); */
+  font-size: 1rem;
+}
