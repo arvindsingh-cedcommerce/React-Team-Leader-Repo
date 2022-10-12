@@ -1,0 +1,3 @@
+export const FETCH='FETCH'
+export const FETCHED_SECCESS='FETCHED_SECCESS'
+export const FETCHED_FAILED='FETCHED_FAILED'
