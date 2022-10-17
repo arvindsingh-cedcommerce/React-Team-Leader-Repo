@@ -14,24 +14,24 @@ export const subtract = (num1, num2) => {
         payload2: num2
     }
 }
-export const divide = (num1, num2) => {
+export const multiply = (num1, num2) => {
     return {
         type: MULTIPLY,
         payload1: num1,
         payload2: num2
     }
 }
-export const multiply = (num1, num2) => {
+export const divide = (num1, num2) => {
     return {
         type: DIVIDE,
         payload1: num1,
         payload2: num2
     }
 }
-export const clear = (num1, num2) => {
+export const clear = () => {
     return {
         type: CLEAR,
-        payload1: num1,
-        payload2: num2
+        payload1: 0,
+        payload2: 0
     }
 }
