@@ -1,0 +1,32 @@
+.parent-div {
+    width: 700px;
+    height: 100px;
+    /* display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center; */
+    /* border: 1px solid gray; */
+    padding-top: 2rem;
+    margin: 1rem auto;
+
+}
+.array1 {
+    height: 100%;
+    width: 20%;
+    margin: 15px;
+    border-radius: 20px;
+}
+.empty-box {
+    /* border: 1px solid gray; */
+    padding: 10px 85px;
+  width: 100px;
+  height: 80px;
+  
+}
+/* .animate__bounceInDown {
+    color: rgb(40, 161, 40);
+}
+.animate__bounceInUp {
+    color: rgb(240, 240, 11);
+} */
+
